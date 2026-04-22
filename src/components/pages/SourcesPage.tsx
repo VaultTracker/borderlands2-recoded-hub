@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput } from '@/components/ui/input-group';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { DROP_SOURCES } from '@/constants/items/drop-sources';
+import { ITEM_CATEGORIES, ITEM_CATEGORY_MAP, ITEMS } from '@/constants/items/item';
 import {
   buildDropSourceRows,
   type DropSourcesSortBy,
@@ -26,6 +27,17 @@ import { ArrowDownAZ, ArrowUpAZ, SearchIcon, XIcon } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
 type DropSourceRow = ReturnType<typeof buildDropSourceRows>[number];
+
+const ITEMS_CATEGORY_MATCHES = ITEMS.reduce(
+  (acc, item) => {
+    const category =
+      ITEM_CATEGORY_MAP[item.itemType.toLowerCase() as keyof typeof ITEM_CATEGORY_MAP] || ITEM_CATEGORIES[0];
+    acc[item.name] = category;
+    return acc;
+  },
+  {} as Record<string, string>
+);
+
 const COLUMN_WIDTHS: Record<string, string> = {
   type: '15%',
   name: '30%',
@@ -62,16 +74,18 @@ function getCellText(row: DropSourceRow, columnId: string) {
       </div>
     );
   }
-  if (columnId === 'drops')
-    return (
-      <div className="flex flex-wrap gap-2">
-        {row.drops.map((drop) => (
-          <a key={drop} href={`/items?name=${drop}`}>
+  return (
+    <div className="flex flex-wrap gap-2">
+      {row.drops.map((drop) => {
+        const category = ITEMS_CATEGORY_MATCHES[drop];
+        return (
+          <a key={drop} href={`/items/${category}?name=${drop}`}>
             <span className="inline-block rounded-full bg-violet-50 px-2 py-0.5 text-xs text-violet-800">{drop}</span>
           </a>
-        ))}
-      </div>
-    );
+        );
+      })}
+    </div>
+  );
   return '';
 }
 

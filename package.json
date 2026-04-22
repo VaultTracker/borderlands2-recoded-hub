@@ -5,6 +5,10 @@
   "engines": {
     "node": ">=22.12.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VaultTracker/borderlands2-recoded-hub.git"
+  },
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
