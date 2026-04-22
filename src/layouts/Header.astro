@@ -1,0 +1,90 @@
+---
+import { Button } from '@/components/ui/button';
+import { BL2_CLASSES } from '@/constants/common/classes';
+import { ITEM_CATEGORIES } from '@/constants/items/item';
+import { cn } from '@/lib/utils';
+import { capitalize, pascalCase } from 'es-toolkit';
+import { HouseIcon } from 'lucide-react';
+
+const MAIN_NAVIGATIONS = [
+  {
+    label: 'Skill Calculator',
+    to: '/skills',
+  },
+  {
+    label: 'Items',
+    to: '/items',
+  },
+  {
+    label: 'Drop Sources',
+    to: '/sources',
+  },
+  {
+    label: 'Vendors',
+    to: '/vendors',
+  },
+];
+
+const ACTIVE_CLASSNAME = cn('border-foreground/50 bg-foreground/20 text-foreground');
+
+const pathname = Astro.url.pathname;
+const isSkillCalculator = pathname.startsWith('/skills');
+const isItems = pathname.startsWith('/items');
+---
+
+<header class="sticky top-0 z-50 flex flex-col gap-2 py-4 backdrop-blur-xs">
+  <div class="mx-auto flex items-center gap-2">
+    <a href="/">
+      <Button variant="secondary">
+        <HouseIcon />
+      </Button>
+    </a>
+    {
+      MAIN_NAVIGATIONS.map((navigation) => (
+        <a href={navigation.to}>
+          <Button
+            variant="secondary"
+            className={cn(pathname.startsWith(navigation.to) && 'bg-blue-200/25 hover:bg-blue-200/30')}
+          >
+            {navigation.label}
+          </Button>
+        </a>
+      ))
+    }
+  </div>
+  <div class="mx-auto flex items-center gap-2">
+    {
+      isSkillCalculator && (
+        <>
+          {BL2_CLASSES.map((character) => (
+            <a href={`/skills/${character}`}>
+              <Button
+                variant="outline"
+                className={cn(
+                  'inline-flex cursor-pointer items-center justify-center gap-2 px-2 py-1 text-base font-semibold text-foreground/85',
+                  pathname.endsWith(character) && ACTIVE_CLASSNAME
+                )}
+              >
+                <img src={`/images/classes/${character}/thumbnail.webp`} alt={character} class="size-5 object-cover" />
+                <span>{pascalCase(character)}</span>
+              </Button>
+            </a>
+          ))}
+        </>
+      )
+    }
+    {
+      isItems && (
+        <>
+          {ITEM_CATEGORIES.map((category) => (
+            <a href={`/items/${category}`}>
+              <Button variant="outline" className={cn(pathname.endsWith(category) && ACTIVE_CLASSNAME)}>
+                {capitalize(category)}
+              </Button>
+            </a>
+          ))}
+        </>
+      )
+    }
+  </div>
+</header>

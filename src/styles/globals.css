@@ -1,0 +1,48 @@
+@reference './tailwind.css';
+
+health {
+  color: red;
+}
+
+crorosive {
+  color: #7ecb40;
+}
+
+shock {
+  color: #00a3d8;
+}
+
+slag {
+  color: #e08aff;
+}
+
+explosive {
+  color: #d2c600;
+}
+
+incendiary {
+  color: #d88600;
+}
+
+skill {
+  color: #78cad2;
+}
+
+action-skill {
+  color: #78cad2;
+  &::before {
+    content: 'F';
+  }
+}
+
+health,
+crossive,
+shock,
+slag,
+explosive,
+incendiary,
+skill,
+action-skill {
+  @apply font-skill;
+  font-size: 1.125em;
+}

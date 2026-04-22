@@ -1,11 +1,46 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import { Button } from '@/components/ui/button';
+import Layout from '@/layouts/Layout.astro';
+import { ExternalLinkIcon } from 'lucide-react';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout class="flex flex-col items-center justify-center gap-12 py-24">
+  <img src="/images/logo.png" alt="Borderlands 2 - Recoded Skill Calculator" class="h-48 object-contain" />
+  <h1 class="text-3xl font-bold">
+    <incendiary>Borderlands 2 Recoded Hub</incendiary>
+  </h1>
+  <ul class="flex flex-col items-center justify-center gap-1">
+    <li>
+      <a href="https://www.nexusmods.com/borderlands2/mods/517" target="_blank" rel="noopener noreferrer">
+        <Button variant="link">
+          Mode Link <ExternalLinkIcon />
+        </Button>
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://docs.google.com/document/d/1GK2woOlIG0g2jDkiF_BkqdIiQmCtJ5h2jNTAEi-3nrs/edit?usp=sharing"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Button variant="link">
+          Official Full Changelog <ExternalLinkIcon />
+        </Button>
+      </a>
+    </li>
+    <li>
+      <a
+        href="https://docs.google.com/spreadsheets/d/1pobNhbAT0-ewvvBKtcrdal9swc8ihKLkLyacDoK41_Q/edit?usp=sharing"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Button variant="link">
+          Gear & Skill Trees Docs <ExternalLinkIcon />
+        </Button>
+      </a>
+    </li>
+  </ul>
 </Layout>

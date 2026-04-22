@@ -1,0 +1,41 @@
+---
+alwaysApply: true
+---
+
+# 프로젝트 규칙
+
+프로젝트 개발 기본 규칙에 대해 정의한다.
+
+항상 본 파일의 내용을 준수하도록한다.
+
+## 개발 환경
+
+질문에 대한 대답은 다음 환경과 라이브러리들을 기반으로 대답한다.
+
+### 기본 환경
+
+- Node.js (20 >)
+- TypeScript
+- Pnpm
+
+### 프레임 워크 및 라이브러리
+
+적극적으로 다음 라이브러리들을 사용한다.
+
+- `react v19`: (https://ko.react.dev/learn)
+- `tailwindcss v3`: (https://v3.tailwindcss.com/)
+- `zustand` (https://zustand-demo.pmnd.rs/)
+- `motion.js` (https://motion.dev/?platform=react)
+- `es-toolkit` (https://es-toolkit.dev/llms-full.txt)
+- `overlay-kit` (https://overlay-kit.slash.page/ko)
+- `usehooks-ts` (https://usehooks-ts.com/)
+- `@tanstack/react-query` (https://tanstack.com/query/latest)
+- `@suspensive/*`
+  - `@suspensive/react` (https://suspensive.org/en/docs/react/motivation)
+  - `@suspensive/react-query` (https://suspensive.org/en/docs/react-query/motivation)
+
+## 요구사항
+
+- 프로젝트 내부 파일 `import`할 때에는 `alias` 경로를 사용하도록 한다.
+- 오프라인 데이터 유지에 대하여 고민한다.
+- 웹뷰로 표출되는 것을 고려한다.
