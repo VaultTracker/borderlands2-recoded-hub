@@ -57,7 +57,7 @@ export const SkillBrench = ({ className, branchKey }: SkillBrenchProps) => {
         padding: `${PADDING_Y}px ${PADDING_X}px`,
         width: `${BG_WIDTH}px`,
         height: `${BG_HEIGHT}px`,
-        backgroundImage: `url(/images/common/skill-bg-gray-${branchKey}.png)`,
+        backgroundImage: `url(${import.meta.env.BASE_URL}/images/common/skill-bg-gray-${branchKey}.png)`,
       }}
     >
       {/* Skill branch background */}
@@ -67,7 +67,7 @@ export const SkillBrench = ({ className, branchKey }: SkillBrenchProps) => {
         style={{
           width: `${BG_WIDTH}px`,
           height: visibleHeight,
-          backgroundImage: `url(/images/common/skill-bg-${branchKey}.png)`,
+          backgroundImage: `url(${import.meta.env.BASE_URL}/images/common/skill-bg-${branchKey}.png)`,
         }}
       ></div>
 

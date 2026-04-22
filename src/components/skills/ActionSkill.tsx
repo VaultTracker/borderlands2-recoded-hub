@@ -29,14 +29,14 @@ export const ActionSkill = ({ character, active, data, className, ...props }: Ac
           <div className={cn('relative h-[73px] w-[256px] overflow-visible')} {...props}>
             <img
               className="relative"
-              src="/images/common/action-skill-bg.png"
+              src={`${import.meta.env.BASE_URL}/images/common/action-skill-bg.png`}
               alt="Action Skill Background"
               style={{ filter: active ? 'saturate(8) hue-rotate(-85deg)' : 'none' }}
             />
             <div className="pointer-events-none absolute -inset-4 select-none">
               <img
                 className="mx-auto h-full object-contain"
-                src={`/images/classes/${character}/action-skill.webp`}
+                src={`${import.meta.env.BASE_URL}/images/classes/${character}/action-skill.webp`}
                 alt="Action Skill"
                 style={{ filter: active ? 'saturate(0.5) hue-rotate(-85deg)' : 'none' }}
               />

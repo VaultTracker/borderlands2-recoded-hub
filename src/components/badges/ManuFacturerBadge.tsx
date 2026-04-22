@@ -9,7 +9,7 @@ type ManuFacturerBadgeProps = {
 
 export const ManuFacturerBadge = ({ manufacturer = '', className, style, ...props }: ManuFacturerBadgeProps) => {
   const isValid = ITEM_MANUFACTURERS.includes(manufacturer);
-  const src = `/images/manufacturer/${kebabCase(manufacturer)}.webp`;
+  const src = `${import.meta.env.BASE_URL}/images/manufacturer/${kebabCase(manufacturer)}.webp`;
   if (!isValid || !manufacturer) return null;
   return (
     <Tooltip delayDuration={1000}>

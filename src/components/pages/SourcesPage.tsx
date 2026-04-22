@@ -79,7 +79,7 @@ function getCellText(row: DropSourceRow, columnId: string) {
       {row.drops.map((drop) => {
         const category = ITEMS_CATEGORY_MATCHES[drop];
         return (
-          <a key={drop} href={`/items/${category}?name=${drop}`}>
+          <a key={drop} href={`${import.meta.env.BASE_URL}/items/${category}?name=${drop}`}>
             <span className="inline-block rounded-full bg-violet-50 px-2 py-0.5 text-xs text-violet-800">{drop}</span>
           </a>
         );

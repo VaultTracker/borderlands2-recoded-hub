@@ -46,20 +46,20 @@ export const SkillItem = ({ data, branchKey, className, style, ...props }: Skill
             ...style,
             gridColumn: data.position.col + 1,
             gridRow: data.position.row + 1,
-            backgroundImage: `url(/images/common/${data.killSkill ? 'kill' : 'common'}-skill.png)`,
+            backgroundImage: `url(${import.meta.env.BASE_URL}/images/common/${data.killSkill ? 'kill' : 'common'}-skill.png)`,
             backgroundSize: 'cover',
           }}
           {...props}
         >
           <img
             className="size-full object-contain"
-            src={`/images/classes/${character}/skills/${branchKey}-${data.position.row}-${data.position.col}.png`}
+            src={`${import.meta.env.BASE_URL}/images/classes/${character}/skills/${branchKey}-${data.position.row}-${data.position.col}.png`}
             alt={data.name}
           />
           {isAvailable && (
             <div
               className="absolute -right-1 -bottom-1 flex h-[21px] w-[39px] items-center justify-center pt-0.5 text-sm"
-              style={{ backgroundImage: 'url(/images/common/skill-points-overlay.png)' }}
+              style={{ backgroundImage: `url(${import.meta.env.BASE_URL}/images/common/skill-points-overlay.png)` }}
             >
               <span>{currentPoint}</span>/<span>{data.maxPoints}</span>
             </div>

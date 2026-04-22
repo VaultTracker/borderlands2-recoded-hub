@@ -176,7 +176,7 @@ export function ItemsPage({ category }: { category: string }) {
                       </div>
                       <div className="flex flex-col gap-0.5">
                         {item.sources.map((source) => (
-                          <a key={source} href={`/sources?name=${source}`}>
+                          <a key={source} href={`${import.meta.env.BASE_URL}/sources?name=${source}`}>
                             <Badge variant="outline" className="bg-blue-500/65 hover:bg-blue-500/80">
                               {source}
                             </Badge>
