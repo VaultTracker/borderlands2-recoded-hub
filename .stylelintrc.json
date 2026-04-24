@@ -1,0 +1,21 @@
+{
+  "extends": ["stylelint-config-standard", "stylelint-config-clean-order"],
+  "rules": {
+    "at-rule-no-unknown": null,
+    "at-rule-no-deprecated": null,
+    "color-named": null,
+    "font-family-no-missing-generic-family-keyword": null,
+    "no-descending-specificity": null,
+    "selector-max-id": 1,
+    "selector-class-pattern": null,
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["global"]
+      }
+    ],
+    "declaration-property-value-no-unknown": null,
+    "selector-type-no-unknown": null,
+    "no-duplicate-selectors": null
+  }
+}

@@ -30,6 +30,7 @@ skill {
 
 action-skill {
   color: #78cad2;
+
   &::before {
     content: 'F';
   }
@@ -44,5 +45,6 @@ incendiary,
 skill,
 action-skill {
   @apply font-skill;
+
   font-size: 1.125em;
 }
