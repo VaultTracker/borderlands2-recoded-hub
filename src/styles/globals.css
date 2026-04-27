@@ -48,3 +48,7 @@ action-skill {
 
   font-size: 1.125em;
 }
+
+.flex-1 {
+  min-height: 0;
+}

@@ -494,13 +494,13 @@ export const DROP_SOURCES: Array<{ type: string; name: string; location?: string
   {
     type: 'Raid Bosses',
     name: 'Verm - Seraph',
-    location: `Tundra  Express (Farmhouse), Caustic Caverns, or the Natural Selection Annex`,
+    location: `Tundra  Express (Farmhouse), Caustic Caverns, Natural Selection Annex`,
     drops: [],
   },
   {
     type: 'Raid Bosses',
     name: 'Verm - Pearl',
-    location: `Tundra  Express (Farmhouse), Caustic Caverns, or the Natural Selection Annex`,
+    location: `Tundra  Express (Farmhouse), Caustic Caverns, Natural Selection Annex`,
     drops: [],
   },
   {

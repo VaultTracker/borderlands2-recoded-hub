@@ -2413,16 +2413,18 @@ export const ITEMS = [
   },
 ] as const;
 
-export const ITEM_TYPES = Array.from(new Set(ITEMS.map((item) => item.itemType)));
-export const ITEM_MANUFACTURERS = Array.from(new Set(ITEMS.map((item) => item.manufacturer)));
-export const ITEM_RARITIES = Array.from(new Set(ITEMS.map((item) => item.rarity)));
-
 export const ITEM_CATEGORY_MAP = {
   shield: 'shields',
   grenade: 'grenades',
   relic: 'relics',
   skin: 'skins',
-  'class mod': 'class mods',
+  'class mod': 'class-mods',
 };
+
+export const ITEM_TYPES = Array.from(new Set(ITEMS.map((item) => item.itemType)));
+export const ITEM_MANUFACTURERS = Array.from(
+  new Set(ITEMS.map((item) => item.manufacturer).filter((item) => item !== '')),
+);
+export const ITEM_RARITIES = Array.from(new Set(ITEMS.map((item) => item.rarity)));
 
 export const ITEM_CATEGORIES = ['weapons', ...Object.values(ITEM_CATEGORY_MAP)];
