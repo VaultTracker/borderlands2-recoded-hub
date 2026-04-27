@@ -4,8 +4,8 @@ import { useVirtualizer } from '@tanstack/react-virtual';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useResizeObserver } from 'usehooks-ts';
 
-import { estimateItemCardHeight } from '@/lib/items';
 import { computeGridColumnCount } from '@/lib/utils';
+import { estimateItemCardHeight } from '@/lib/utils/items';
 import { useItemStore } from '@/stores/items.store';
 
 import { ItemCard } from './ItemCard';

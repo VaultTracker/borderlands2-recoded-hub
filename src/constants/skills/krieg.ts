@@ -485,7 +485,7 @@ export const DATA: CharacterSkillTreeData = {
               suffix: '100',
             },
           ],
-          maxPoints: 5,
+          maxPoints: 1,
         },
         {
           position: {

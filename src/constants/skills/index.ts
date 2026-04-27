@@ -9,7 +9,7 @@ export type * from './types.d';
 export * from './core';
 export * from './tiers';
 
-const SKILL_SKILL_DATA_MAP = {
+const SKILL_DATA_MAP = {
   axton: AXTON_SKILL_DATA,
   gaige: GAIGE_SKILL_DATA,
   maya: MAYA_SKILL_DATA,
@@ -19,7 +19,7 @@ const SKILL_SKILL_DATA_MAP = {
 };
 
 export {
-  SKILL_SKILL_DATA_MAP,
+  SKILL_DATA_MAP,
   AXTON_SKILL_DATA,
   GAIGE_SKILL_DATA,
   KRIEG_SKILL_DATA,
