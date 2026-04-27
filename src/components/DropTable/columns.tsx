@@ -4,9 +4,8 @@ import { ColumnDef } from '@tanstack/react-table';
 import { isSet } from 'es-toolkit';
 import Link from 'next/link';
 
+import { MultiSelectFilterPopover } from '@/components/common/MultiSelectFilterPopover';
 import { DROP_SOURCES, DROP_SOURCES_TYPES, ITEMS, ITEM_CATEGORIES, ITEM_CATEGORY_MAP } from '@/constants/items';
-
-import { MultiSelectFilterPopover } from '../common/MultiSelectFilterPopover';
 
 const ITEMS_CATEGORY_MATCHES = ITEMS.reduce(
   (acc, item) => {

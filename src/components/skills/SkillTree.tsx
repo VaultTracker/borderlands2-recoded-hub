@@ -5,6 +5,7 @@ import { useMemo } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import { BASE_PATH } from '~/next.config';
 
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
 import { Bl2ClassType } from '@/constants/common/classes';
 import {
   CHARACTER_SKILL_TIER_BREAKPOINTS_MAP,
@@ -18,7 +19,6 @@ import {
 import { cn } from '@/lib/utils';
 import { getSkillTreeTier, sumSkillTreePoints, useSkillTreeStore } from '@/stores/skill-tree.store';
 
-import { HoverCard, HoverCardContent, HoverCardTrigger } from '../ui/hover-card';
 import { SkillItem } from './SkillItem';
 
 type SkillTreeProps = {

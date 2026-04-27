@@ -3,10 +3,9 @@
 import { useLocalStorage } from 'usehooks-ts';
 import { useShallow } from 'zustand/react/shallow';
 
+import { Button } from '@/components/ui/button';
 import { MAX_TOTAL_SKILL_POINTS } from '@/constants/skills';
 import { calculateTotalSkillPoints, resetSkillTrees, useSkillTreeStore } from '@/stores/skill-tree.store';
-
-import { Button } from '../ui/button';
 
 const STORE_KEY = 'BORDERLANDS2_RECODED_HUB_MAX_SKILL_POINTS';
 
