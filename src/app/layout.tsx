@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Homenaje, Inter } from 'next/font/google';
 import localFont from 'next/font/local';
+import { Suspense } from 'react';
 
 import '@/styles/globals.css';
 import '@/styles/tailwind.css';
@@ -47,7 +48,9 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col">
         <Header />
-        <Providers>{children}</Providers>
+        <Providers>
+          <Suspense fallback={null}>{children}</Suspense>
+        </Providers>
       </body>
     </html>
   );
