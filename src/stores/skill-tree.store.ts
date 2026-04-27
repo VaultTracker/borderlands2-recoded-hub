@@ -23,6 +23,7 @@ export type SkillTreeStoreActions = {
     position: SkillTreeItemPosition,
     value: number,
   ) => void;
+  hydrateStore: (character: Bl2ClassType) => void;
 };
 export type SkillTreeStore = SkillTreeStoreState & SkillTreeStoreActions;
 
@@ -34,6 +35,17 @@ const initializeSkillTrees = () =>
 
 export const useSkillTreeStore = create<SkillTreeStore>((set) => ({
   skillTrees: initializeSkillTrees(),
+  hydrateStore: (character) => {
+    const key = getStorageKey(character);
+    try {
+      const raw = localStorage.getItem(key);
+      if (!raw) throw new Error('No data found');
+      const data = JSON.parse(raw);
+      set({ skillTrees: data });
+    } catch {
+      set({ skillTrees: initializeSkillTrees() });
+    }
+  },
   setSkillTreePoints: (skillTreeKey, points) => {
     set((state) => ({
       skillTrees: { ...state.skillTrees, [skillTreeKey]: points },
@@ -77,6 +89,7 @@ const getStorageKey = (character: Bl2ClassType) => `${STORE_KEY}_${character}`;
 export function persistSkillTrees(character: Bl2ClassType, skillTrees?: SkillTrees) {
   const data = skillTrees ?? useSkillTreeStore.getState().skillTrees;
   const key = getStorageKey(character);
+  console.log(data);
   localStorage.setItem(key, JSON.stringify(data));
 }
 

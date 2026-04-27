@@ -2,6 +2,7 @@ import { pascalCase } from 'es-toolkit';
 
 import { ActionSkill } from '@/components/skills/ActionSkill';
 import { SkillPoints } from '@/components/skills/SkillPoints';
+import { SkillSync } from '@/components/skills/SkillSync';
 import { SkillTree } from '@/components/skills/SkillTree';
 import { BL2_CLASSES, Bl2ClassType } from '@/constants/common/classes';
 import { CharacterSkillTreeData, SKILL_DATA_MAP, SKILL_TREE_KEYS } from '@/constants/skills';
@@ -16,6 +17,7 @@ const Page = async ({ params }: { params: { character: Bl2ClassType; data: Chara
 
   return (
     <main className="py-container flex flex-col items-center gap-6">
+      <SkillSync character={character} />
       <h1 className="text-2xl font-bold">{pascalCase(character)}</h1>
       <SkillPoints />
       <ActionSkill character={character} data={data.actionSkill} />
