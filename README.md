@@ -1,107 +1,104 @@
-# nextjs-ssg-template
+# Borderlands 2 Recoded Hub
 
-Next.js 기반 **정적 사이트(SSG / `next export`)** 보일러플레이트입니다. UI는 **Tailwind CSS v3**와 **shadcn/ui**(New York 스타일)를 사용하고, 레거시 브라우저용 **폴리필 번들**을 빌드 단계에서 생성합니다.
+This is a static website for browsing Borderlands 2 Recoded Mod data on the web.  
+It helps players quickly explore skill trees, items, drop sources, and other gameplay information.
 
-## 포함 스택
+## Tech Stack
 
-| 영역 | 내용 |
+| Area | Details |
 |------|------|
-| 프레임워크 | [Next.js](https://nextjs.org) 16(App Router), [React](https://react.dev) 19 |
-| 스타일 | Tailwind CSS 3, CSS 변수 기반 테마, `tailwindcss-animate` |
-| 컴포넌트 | [shadcn/ui](https://ui.shadcn.com) + [Radix UI](https://www.radix-ui.com), [Lucide](https://lucide.dev) |
-| 폼·검증 | [React Hook Form](https://react-hook-form.com), [Zod](https://zod.dev), `@hookform/resolvers` |
-| 상태·데이터 | [TanStack Query](https://tanstack.com/query), [Jotai](https://jotai.org), [Zustand](https://zustand-demo.pmnd.rs) |
-| 기타 UI | `next-themes`, `sonner`, `cmdk`, `vaul`, `react-day-picker`, `overlay-kit` |
-| 품질 | ESLint(`eslint-config-next`), Prettier, Stylelint, Husky, lint-staged |
+| Framework | [Next.js](https://nextjs.org) 16 (App Router), [React](https://react.dev) 19 |
+| Language | TypeScript |
+| Styling | Tailwind CSS 4 |
+| UI | shadcn/ui, Radix UI, Lucide |
+| State/Data | Zustand, TanStack Query, TanStack Table |
+| Utilities | es-toolkit, usehooks-ts, zod |
+| Quality Tools | ESLint, Prettier, Husky, lint-staged |
 
-## 빌드·배포 특성
+## Project Highlights
 
-- **`output: 'export'`** — 순수 정적 HTML/JS/CSS 산출물로 배포 가능합니다.
-- **`distDir: 'dist'`** — 빌드 결과물은 기본적으로 `dist/`에 생성됩니다.
-- **`images.unoptimized: true`** — 정적보내기에 맞춘 이미지 설정입니다.
-- **폴리필** — `npm run build` 시 `scripts/build-polyfills.mjs`가 `public/polyfills/`에 `legacy`·`modern` 번들을 만듭니다. 루트 레이아웃의 `PolyfillLoader`가 이를 로드합니다.
+- **Static-export ready**: Uses `output: 'export'` in `next.config.ts`.
+- **GitHub Pages friendly**: `basePath` and `assetPrefix` are set to `'/borderlands2-recoded-hub'`.
+- **Image setting for static export**: Uses `images.unoptimized: true`.
+- **WebView-compatible deployment**: The generated static output (`out/`) can be deployed to different hosting and embedded environments.
 
-## 시작하기
+## Getting Started
 
-### 요구 사항
+### Requirements
 
-- [Node.js](https://nodejs.org/) (LTS 권장)
+- Node.js 20+
+- pnpm
 
-### 설치
-
-```bash
-npm install
-```
-
-### 개발 서버
+### Install
 
 ```bash
-npm run dev
+pnpm install
 ```
 
-브라우저에서 [http://localhost:3000](http://localhost:3000) 을 엽니다.
-
-### 프로덕션 빌드
+### Run Development Server
 
 ```bash
-npm run build
+pnpm dev
 ```
 
-폴리필 생성 후 Next 빌드가 실행되며, 결과는 `dist/`에 출력됩니다.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+### Build and Run
 
 ```bash
-npm run start
+pnpm build
 ```
 
-로컬에서 프로덕션 빌드를 검증할 때 사용합니다.
+The static output is generated in the `out/` directory.
 
-## npm 스크립트
-
-| 스크립트 | 설명 |
-|----------|------|
-| `dev` | 개발 서버 (`next dev`) |
-| `build` | 폴리필 빌드 + `next build` (정적보내기) |
-| `build:polyfills` | 폴리필만 생성 |
-| `start` | 프로덕션 서버 (`next start`) |
-| `lint` | ESLint |
-| `clean` | `dist/` 정리 |
-| `devextreme:theme` | DevExtreme 커스텀 테마 CSS 생성(프로젝트에 포함된 경로 기준) |
-
-## 디렉터리 개요
-
+```bash
+pnpm start
 ```
+
+This is the production run script defined in `package.json`.
+To preview the static output (`out/`) directly, use:
+
+```bash
+pnpm dlx serve out
+```
+
+## Scripts
+
+| Command | Description |
+|--------|------|
+| `pnpm dev` | Run dev server (`next dev`) |
+| `pnpm build` | Build production bundle + static export (`next build`) |
+| `pnpm start` | Run production server (`next start`) |
+| `pnpm lint` | Run ESLint |
+
+## Key Directories
+
+```text
 src/
-  app/           # App Router — 페이지·레이아웃·메타데이터
-  components/  # 공용 컴포넌트(ui, core 등)
-  lib/           # 유틸(예: shadcn `cn` 등)
-  styles/        # 전역·Tailwind 진입 CSS
-public/
-  polyfills/     # 빌드 시 생성되는 폴리필 스크립트
-scripts/
-  build-polyfills.mjs
+  app/                # App Router pages/layouts
+  components/         # UI and domain components
+  stores/             # Global/domain state (zustand)
+  data/               # Static game data resources
+  styles/             # Global styles
+public/               # Static assets
+.github/workflows/    # GitHub Actions deployment workflow
 ```
 
-TypeScript 경로 별칭: `@/*` → `./src/*` (`tsconfig.json`).
+TypeScript alias: `@/*` -> `./src/*`
 
-## shadcn/ui
+## Deployment
 
-설정은 루트의 `components.json`을 따릅니다. 컴포넌트 추가는 [shadcn CLI](https://ui.shadcn.com/docs/cli) 문서를 참고하세요.
+This project includes an automated GitHub Pages deployment workflow.
 
-## Git 훅
+- Workflow file: `.github/workflows/deploy-pages.yml`
+- Trigger branch: `deploy`
+- Deployment artifact path: `./out`
 
-`prepare` 스크립트로 Husky가 설정됩니다. 커밋 전에 `lint-staged`가 지정된 확장자에 대해 Prettier·ESLint를 실행합니다.
+You can also deploy `out/` to other static hosts (for example S3 or Netlify).
 
-## 배포
+## References
 
-정적 산출물이므로 **S3 + CloudFront**, **GitHub Pages**, **Netlify**, **Vercel(정적)** 등 정적 호스팅에 `dist/` 내용을 업로드하면 됩니다. 호스트별 루트 경로·리라이트 규칙은 환경에 맞게 조정하세요.
-
-## 참고 링크
-
-- [Next.js 문서](https://nextjs.org/docs)
-- [Next.js 정적보내기](https://nextjs.org/docs/app/building-your-application/deploying/static-exports)
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Next.js Static Exports](https://nextjs.org/docs/app/building-your-application/deploying/static-exports)
 - [Tailwind CSS](https://tailwindcss.com/docs)
-- [shadcn/ui](https://ui.shadcn.com)
-
----
-
-이 저장소는 [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app)으로 시작한 뒤, SSG·스타일·도구 체인을 프로젝트 목적에 맞게 확장한 템플릿입니다.
+- [shadcn/ui Documentation](https://ui.shadcn.com/docs)
