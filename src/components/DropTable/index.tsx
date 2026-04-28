@@ -39,6 +39,7 @@ export function DropTable({ className, ...props }: React.ComponentProps<'div'>) 
   useLayoutEffect(() => {
     const name = new URLSearchParams(window.location.search).get('name');
     if (name) {
+      window.history.replaceState(null, '', window.location.pathname);
       setSearchValue(name);
     }
   }, []);
